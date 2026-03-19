@@ -35,4 +35,18 @@ router.post("/new", (req, res) => {
   res.redirect("/");
 });
 
+router.get("/messages/:messageId", (req, res) => {
+  const messageId = Number(req.params.messageId);
+  const message = messages[messageId];
+
+  if (Number.isNaN(messageId) || !message) {
+    return res.status(404).send("Message not found");
+  }
+
+  res.render("message", {
+    title: "Message Details",
+    message,
+  });
+});
+
 module.exports = router;
