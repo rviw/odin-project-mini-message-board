@@ -32,7 +32,7 @@ body {
 }
 
 h1 {
-  margin: 0 0 12px;
+  margin: 24px 0;
   font-weight: 500;
   letter-spacing: -1px;
 }
@@ -43,6 +43,7 @@ p {
 
 a {
   color: inherit;
+  font-size: 0.9rem;
 }
 
 body > p a {

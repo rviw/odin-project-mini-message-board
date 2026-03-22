@@ -37,3 +37,16 @@ exports.messageDetailGet = (req, res) => {
     message,
   });
 };
+
+exports.messageDeletePost = (req, res) => {
+  const messageId = Number(req.params.messageId);
+  const message = messagesStorage.getMessage(messageId);
+
+  if (!message) {
+    return res.status(404).send("Message not found");
+  }
+
+  messagesStorage.deleteMessage(messageId);
+
+  res.redirect("/");
+};

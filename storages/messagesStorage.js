@@ -27,6 +27,10 @@ class MessagesStorage {
   getMessage(id) {
     return this.storage[id];
   }
+
+  deleteMessage(id) {
+    delete this.storage[id];
+  }
 }
 
 module.exports = new MessagesStorage();
