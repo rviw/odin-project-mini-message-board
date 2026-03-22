@@ -7,12 +7,12 @@
     <p><a href="/new">Add a new message</a></p>
 
     <ul>
-      <% messages.forEach((message, index) => { %>
+      <% messages.forEach((message) => { %>
         <li>
           <p><%= message.user %></p>
           <p><%= message.text %></p>
           <p><%= message.added.toLocaleString() %></p>
-          <p><a href="/messages/<%= index %>">Open</a></p>
+          <p><a href="/messages/<%= message.id %>">Open</a></p>
         </li>
       <% }) %>
     </ul>
