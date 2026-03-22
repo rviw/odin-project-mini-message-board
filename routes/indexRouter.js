@@ -16,11 +16,11 @@ const messages = [
 ];
 
 router.get("/", (req, res) => {
-  res.render("index", { title: "Mini Messageboard", messages: messages });
+  res.render("pages/index", { title: "Mini Messageboard", messages: messages });
 });
 
 router.get("/new", (req, res) => {
-  res.render("form", { title: "New Message" });
+  res.render("pages/form", { title: "New Message" });
 });
 
 router.post("/new", (req, res) => {
@@ -43,7 +43,7 @@ router.get("/messages/:messageId", (req, res) => {
     return res.status(404).send("Message not found");
   }
 
-  res.render("message", {
+  res.render("pages/message", {
     title: "Message Details",
     message,
   });
