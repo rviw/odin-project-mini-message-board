@@ -1,4 +1,5 @@
 const messagesStorage = require("../storages/messagesStorage");
+const { body, validationResult, matchedData } = require("express-validator");
 
 exports.messagesListGet = (req, res) => {
   res.render("pages/index", {
@@ -13,16 +14,43 @@ exports.messagesCreateGet = (req, res) => {
   });
 };
 
-exports.messagesCreatePost = (req, res) => {
-  const { messageUser, messageText } = req.body;
+const validateMessage = [
+  body("messageUser")
+    .trim()
+    .notEmpty()
+    .withMessage(`Author is required.`)
+    .isLength({ min: 1, max: 20 })
+    .withMessage(`Author must be between 1 and 20 characters.`),
+  body("messageText")
+    .trim()
+    .notEmpty()
+    .withMessage(`Message is required.`)
+    .isLength({ min: 1, max: 100 })
+    .withMessage(`Message must be between 1 and 100 characters.`),
+];
 
-  messagesStorage.addMessage({
-    text: messageText,
-    user: messageUser,
-  });
+exports.messagesCreatePost = [
+  validateMessage,
+  (req, res) => {
+    const errors = validationResult(req);
 
-  res.redirect("/");
-};
+    if (!errors.isEmpty()) {
+      return res.status(400).render("pages/form", {
+        title: "New Message",
+        errors: errors.array(),
+      });
+    }
+
+    const { messageUser, messageText } = matchedData(req);
+
+    messagesStorage.addMessage({
+      text: messageText,
+      user: messageUser,
+    });
+
+    res.redirect("/");
+  },
+];
 
 exports.messageDetailGet = (req, res) => {
   const messageId = Number(req.params.messageId);
