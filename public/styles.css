@@ -1,0 +1,161 @@
+:root {
+  --text: #08060d;
+  --muted: #6b6375;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --accent: #aa3bff;
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+
+  font: 18px/1.5 var(--sans);
+  letter-spacing: 1.68px;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  padding: 3rem 2rem;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+body > p a {
+  display: inline-block;
+  margin: 1.5rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--text);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--text);
+    color: var(--bg);
+    outline: none;
+  }
+}
+
+ul {
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+li {
+  padding: 1.5rem 0 1rem;
+  border-bottom: 1px solid var(--border);
+
+  & p {
+    margin-bottom: 0.75rem;
+
+    &:first-child {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    &:nth-child(3) {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    & a {
+      display: inline-block;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--accent);
+        outline: none;
+      }
+    }
+  }
+}
+
+form {
+  padding: 1.5rem 0;
+
+  & > div {
+    margin-bottom: 1.5rem;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 1rem;
+
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+
+  &:focus {
+    outline: none;
+    border-bottom-color: var(--accent);
+  }
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--text);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.68px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--text);
+    color: var(--bg);
+    outline: none;
+  }
+}
